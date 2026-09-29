@@ -68,27 +68,11 @@ section{padding-block:clamp(56px,8vw,104px);border-top:1px solid var(--line)}
 .app-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px}
 .app-head h2{font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800}
 .app-head p{max-width:40ch;color:var(--muted);margin-top:14px;font-size:1.15rem}
-.app{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:clamp(32px,6vw,80px);margin-top:clamp(40px,6vw,64px);align-items:start}
+.app{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(32px,6vw,80px);margin-top:clamp(40px,6vw,64px);align-items:start}
 
-/* phone */
-.phone{max-width:100%;aspect-ratio:9/19;background:var(--screen);color:var(--screen-ink);border-radius:40px;padding:14px;box-shadow:0 30px 60px -30px rgba(255,77,31,.45),0 0 0 1px var(--line);position:sticky;top:96px}
-.scr{height:100%;border-radius:28px;overflow:hidden;position:relative;display:flex;flex-direction:column;padding:22px 18px;background:#1a1110}
-.viz{position:absolute;inset:0;filter:blur(28px);opacity:.85}
-.viz span{position:absolute;border-radius:50%;animation:pulse 2.4s ease-in-out infinite}
-.viz span:nth-child(1){width:60%;height:34%;left:-6%;top:6%;background:#ff4d1f}
-.viz span:nth-child(2){width:50%;height:30%;right:-8%;top:20%;background:#ff9a2e;animation-delay:-.8s}
-.viz span:nth-child(3){width:46%;height:26%;left:24%;top:30%;background:#b3122a;animation-delay:-1.6s}
-@keyframes pulse{50%{transform:scale(1.18)}}
-.scr > *:not(.viz){position:relative}
-.np{font:500 .7rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;opacity:.7}
-.lyrics{margin-top:auto;display:grid;gap:10px;font:700 1.15rem/1.25 var(--display)}
-.lyrics .dim{opacity:.35}
-.lyrics .on{background:linear-gradient(90deg,#fff 62%,rgba(255,255,255,.35) 62%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.track{margin-top:22px}
-.track b{display:block;font:700 1rem/1.2 var(--display)} .track small{opacity:.6;font-size:.8rem}
-.prog{height:3px;background:rgba(255,255,255,.2);border-radius:3px;margin-top:14px}
-.prog i{display:block;height:100%;width:42%;background:#fff;border-radius:3px}
-.pitch-chip{margin-top:14px;align-self:flex-start;font:500 .72rem/1 var(--mono);padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.12)}
+/* screenshots: the five store slides in a row; on narrow screens they scroll sideways */
+.shots{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:clamp(10px,1.6vw,18px);margin:clamp(40px,6vw,64px) 0 0;padding:0;list-style:none}
+.shots img{display:block;width:100%;height:auto;aspect-ratio:9/16;border-radius:18px;background:var(--screen);box-shadow:0 24px 48px -28px rgba(255,77,31,.45),0 0 0 1px var(--line)}
 
 /* features */
 .feats{display:grid;gap:0;list-style:none;margin:0;padding:0}
@@ -130,7 +114,8 @@ footer{border-top:1px solid var(--line);padding-block:28px 40px;display:flex;fle
 @media (max-width:820px){
   .hero,.app,.studio{grid-template-columns:minmax(0,1fr)}
   .hero-mark{justify-self:start;width:min(70%,300px);order:-1}
-  .phone{position:static;width:min(100%,300px);margin-inline:auto}
+  .shots{grid-auto-columns:min(68%,260px);overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;margin-inline:calc(-1*clamp(16px,4vw,40px));padding:0 clamp(16px,4vw,40px) 14px;scroll-padding-inline:clamp(16px,4vw,40px)}
+  .shots li{scroll-snap-align:start}
   .feats li{grid-template-columns:minmax(0,1fr);gap:6px}
 }
 @media (max-width:480px){nav a.hide-s{display:none}}
@@ -167,35 +152,31 @@ footer{border-top:1px solid var(--line);padding-block:28px 40px;display:flex;fle
       <div>
         <p class="label">Our first release</p>
         <h2 id="lp-title" style="margin-top:14px">Lava Player</h2>
-        <p>A music player for the files already on your phone. No accounts, no subscriptions, no streaming. Just your library, played well.</p>
+        <p>Your music, reimagined. A music player for the files already on your phone. Free to use, no ads, no accounts, no subscriptions. Just your library, played well.</p>
       </div>
     </div>
 
+    <ul class="shots" tabindex="0" aria-label="Lava Player screenshots">
+      <li><img src="screenshots/lava-player-1.jpg" width="720" height="1280" loading="lazy" alt="Designed with passion. Free to use, no ads."></li>
+      <li><img src="screenshots/lava-player-2.jpg" width="720" height="1280" loading="lazy" alt="Your music, reimagined with speed and pitch control: the player slowing a track down by two semitones."></li>
+      <li><img src="screenshots/lava-player-3.jpg" width="720" height="1280" loading="lazy" alt="Customize and play with an interactive visualizer that follows your finger."></li>
+      <li><img src="screenshots/lava-player-4.jpg" width="720" height="1280" loading="lazy" alt="Enjoy using a minimal gesture-based interface: swipe to skip and seek."></li>
+      <li><img src="screenshots/lava-player-5.jpg" width="720" height="1280" loading="lazy" alt="Set your own covers, names and lyrics for any track."></li>
+    </ul>
+
     <div class="app">
-      <div class="phone" aria-label="Lava Player now playing screen">
-        <div class="scr">
-          <div class="viz" aria-hidden="true"><span></span><span></span><span></span></div>
-          <p class="np">Now playing</p>
-          <span class="pitch-chip" id="chip">Pitch 0 st · 1.00×</span>
-          <div class="lyrics" aria-hidden="true">
-            <span class="dim">the city hums below</span>
-            <span class="on">and every light is slow</span>
-            <span class="dim">I let the record play</span>
-          </div>
-          <div class="track"><b>Slow Lights</b><small>Local file · FLAC</small></div>
-          <div class="prog"><i></i></div>
-        </div>
+      <div>
+        <ul class="feats">
+          <li><h3>Speed &amp; pitch</h3><p>Slow a track down or speed it up by up to 12 semitones either way, with one swipe on the pitch badge. Changes apply instantly, without a pause.</p></li>
+          <li><h3>Interactive visualizer</h3><p>A living scene that moves to the music and responds to your touch. Customize it and play with it while you listen.</p></li>
+          <li><h3>Minimal, gesture-based</h3><p>Nothing extra on the screen. Pause, seek, skip and change the pitch with gestures.</p></li>
+          <li><h3>Covers, names &amp; lyrics</h3><p>Set your own artwork, title, artist and lyrics for any track, and see how your music looks in a player.</p></li>
+          <li><h3>Your library</h3><p>Albums, artists, playlists, Favorites and search. All popular audio formats are supported.</p></li>
+        </ul>
       </div>
 
       <div>
-        <ul class="feats">
-          <li><h3>Speed &amp; pitch</h3><p>Slow a track down or speed it up by up to 12 semitones either way. Changes apply instantly, without a pause.</p></li>
-          <li><h3>Visualizer</h3><p>Colorful shapes move to the beat and take their colors from the album cover.</p></li>
-          <li><h3>Your library</h3><p>Albums, artists, playlists, Favorites and search. All popular audio formats are supported.</p></li>
-          <li><h3>Gestures</h3><p>Pause, seek and skip tracks with a single touch.</p></li>
-        </ul>
-
-        <div class="pitch" style="margin-top:32px">
+        <div class="pitch">
           <div class="pitch-top">
             <p class="label">Try the pitch control</p>
             <p class="pitch-val" aria-live="polite"><span id="pv">0</span><small>SEMITONES</small></p>
@@ -210,10 +191,10 @@ footer{border-top:1px solid var(--line);padding-block:28px 40px;display:flex;fle
         </div>
 
         <div class="specs">
-          <span>Android 8.0+</span><span>12 languages</span><span>Offline · local files</span><span>No subscription</span>
+          <span>Android 8.0+</span><span>12 languages</span><span>Offline · local files</span><span>Free · no ads</span>
         </div>
         <div class="get">
-          <a class="btn lava" href="https://play.google.com/store/search?q=lava%20player&amp;c=apps" target="_blank" rel="noopener">Get it on Google Play</a>
+          <a class="btn lava" href="https://play.google.com/store/apps/details?id=app.inflavorstudio.lava" target="_blank" rel="noopener">Get it on Google Play</a>
         </div>
       </div>
     </div>
@@ -247,13 +228,12 @@ footer{border-top:1px solid var(--line);padding-block:28px 40px;display:flex;fle
 
 <script>
 (function(){
-  var r=document.getElementById('pitch'),p=document.getElementById('wp'),pv=document.getElementById('pv'),chip=document.getElementById('chip');
+  var r=document.getElementById('pitch'),p=document.getElementById('wp'),pv=document.getElementById('pv');
   function draw(){
     var st=+r.value, ratio=Math.pow(2,st/12), cycles=4*ratio, d='';
     for(var x=0;x<=600;x+=4){var y=40+30*Math.sin(x/600*cycles*2*Math.PI);d+=(x?'L':'M')+x+' '+y.toFixed(1);}
     p.setAttribute('d',d);
     pv.textContent=(st>0?'+':st<0?'−':'')+Math.abs(st);
-    chip.textContent='Pitch '+(st>0?'+':st<0?'−':'')+Math.abs(st)+' st · '+ratio.toFixed(2)+'×';
   }
   r.addEventListener('input',draw);draw();
   document.getElementById('yr').textContent=new Date().getFullYear();
