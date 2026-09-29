@@ -57,8 +57,7 @@ nav a{text-decoration:none;color:var(--muted)} nav a:hover{color:var(--ink)}
 .hero p{margin-top:24px;max-width:34ch;font-size:clamp(1.1rem,1.6vw,1.3rem);color:var(--muted)}
 .hero .cta{margin-top:32px;display:flex;flex-wrap:wrap;gap:12px}
 .hero-mark{max-width:100%;justify-self:end;width:min(100%,420px)}
-.hero-mark img{width:100%;height:auto;animation:float 7s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(-10px) rotate(-1.5deg)}}
+.hero-mark img{width:100%;height:auto}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:999px;font:600 1rem/1 var(--body);text-decoration:none;border:1.5px solid var(--ink);transition:transform .15s,background .15s}
 .btn:hover{transform:translateY(-2px)}
 .btn.solid{background:var(--ink);color:var(--bg)}
@@ -157,10 +156,6 @@ footer{border-top:1px solid var(--line);padding-block:28px 40px;display:flex;fle
       <p class="label">Android app studio</p>
       <h1 style="margin-top:18px">Apps with a <em>flavor</em> of their own.</h1>
       <p>We design and build Android apps that are fast, focused and pleasant to hold. No ads in your face, no subscriptions you didn't ask for.</p>
-      <div class="cta">
-        <a class="btn solid" href="#lava-player">See Lava Player</a>
-        <a class="btn" href="#contact">Work with us</a>
-      </div>
     </div>
     <div class="hero-mark" aria-hidden="true">
       <img src="logo-black.png" alt="" width="420" height="306">
@@ -196,7 +191,6 @@ footer{border-top:1px solid var(--line);padding-block:28px 40px;display:flex;fle
         <ul class="feats">
           <li><h3>Speed &amp; pitch</h3><p>Slow a track down or speed it up by up to 12 semitones either way. Changes apply instantly, without a pause.</p></li>
           <li><h3>Visualizer</h3><p>Colorful shapes move to the beat and take their colors from the album cover.</p></li>
-          <li><h3>Synced lyrics</h3><p>Lines light up in time with the vocals, and you can open the lyrics full screen.</p></li>
           <li><h3>Your library</h3><p>Albums, artists, playlists, Favorites and search. All popular audio formats are supported.</p></li>
           <li><h3>Gestures</h3><p>Pause, seek and skip tracks with a single touch.</p></li>
         </ul>
@@ -248,7 +242,6 @@ footer{border-top:1px solid var(--line);padding-block:28px 40px;display:flex;fle
 
 <footer>
   <span>© <span id="yr">2026</span> inflavor studio</span>
-  <span>Made in Ukraine</span>
 </footer>
 </div>
 
