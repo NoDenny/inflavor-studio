@@ -1,0 +1,211 @@
+From c05e91a56cd7fa78dd1cdde28db86eed6a2cb40f Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Wed, 30 Sep 2026 13:10:11 +0000
+Subject: [PATCH] Add the Lava Player privacy policy page
+
+Google Play requires a privacy policy for Lava Player because it uses
+Google Analytics for Firebase. The page lives at /lava/privacy/, matches
+the home page's look, and is linked from the home page footer.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01LC2h64QmjwLoN4b5xJ7q7B
+---
+ index.html              |   1 +
+ lava/privacy/index.html | 173 ++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 174 insertions(+)
+ create mode 100644 lava/privacy/index.html
+
+diff --git a/index.html b/index.html
+index ca754dd..f1a4ead 100644
+--- a/index.html
++++ b/index.html
+@@ -223,6 +223,7 @@ footer{border-top:1px solid var(--line);padding-block:28px 40px;display:flex;fle
+ 
+ <footer>
+   <span>© <span id="yr">2026</span> inflavor studio</span>
++  <a href="lava/privacy/" style="color:inherit">Lava Player privacy policy</a>
+ </footer>
+ </div>
+ 
+diff --git a/lava/privacy/index.html b/lava/privacy/index.html
+new file mode 100644
+index 0000000..f9def8d
+--- /dev/null
++++ b/lava/privacy/index.html
+@@ -0,0 +1,173 @@
++<!doctype html>
++<html lang="en">
++<head>
++<meta charset="utf-8">
++<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
++<link rel="icon" type="image/png" href="../../favicon.png">
++<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
++<title>Lava Player Privacy Policy</title>
++<meta name="description" content="What data Lava Player handles and why: your music stays on your device, and anonymous usage analytics come from Google Analytics for Firebase.">
++<link rel="preconnect" href="https://fonts.googleapis.com">
++<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
++<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
++<style>
++/* Same tokens and header as the home page; the body is a single reading column */
++:root{
++  --bg:#f6f5f3; --surface:#ffffff; --ink:#111111; --muted:#5c5752; --line:#e2dedb;
++  --lava:#ff4d1f; --ember:#ff7a1a;
++  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
++  --body:"Figtree",ui-sans-serif,system-ui,sans-serif;
++  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
++}
++@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
++  --bg:#12110f; --surface:#1b1917; --ink:#f5f0ec; --muted:#a39b94; --line:#2c2926;
++  --lava:#ff6a3d; --ember:#ff8c3a; color-scheme:dark;}}
++:root[data-theme="dark"]{
++  --bg:#12110f; --surface:#1b1917; --ink:#f5f0ec; --muted:#a39b94; --line:#2c2926;
++  --lava:#ff6a3d; --ember:#ff8c3a; color-scheme:dark;}
++
++*{box-sizing:border-box}
++body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body);padding-inline:clamp(16px,4vw,40px)}
++.wrap{max-width:1120px;margin-inline:auto}
++a{color:inherit}
++:focus-visible{outline:2px solid var(--lava);outline-offset:3px;border-radius:4px}
++h1,h2{font-family:var(--display);line-height:1.05;text-wrap:balance;margin:0;letter-spacing:-.02em}
++p{margin:0}
++.label{font:500 .75rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
++
++header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);margin-inline:calc(-1*clamp(16px,4vw,40px));padding-inline:clamp(16px,4vw,40px)}
++.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;border-bottom:1px solid var(--line)}
++.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 1.125rem/1 var(--display);letter-spacing:-.01em}
++nav{display:flex;gap:clamp(12px,3vw,28px);font-weight:500;font-size:.95rem}
++nav a{text-decoration:none;color:var(--muted)} nav a:hover{color:var(--ink)}
++
++article{max-width:68ch;padding-block:clamp(40px,8vw,96px) clamp(48px,8vw,96px)}
++article h1{font-size:clamp(2.4rem,6vw,4.2rem);font-weight:800;margin-top:14px}
++.date{margin-top:16px;color:var(--muted)}
++.lead{margin-top:28px;font-size:1.15rem}
++article h2{font-size:clamp(1.4rem,2.6vw,1.75rem);font-weight:700;margin-top:48px;padding-top:28px;border-top:1px solid var(--line)}
++article h2 + p, article h2 + ul{margin-top:14px}
++article p + p, article ul + p, article p + ul{margin-top:14px}
++article p, article li{color:var(--muted)}
++article .lead, article b{color:var(--ink)}
++article ul{margin-bottom:0;padding-left:1.2em}
++article li{margin-top:8px}
++article li::marker{color:var(--lava)}
++article a{color:var(--lava);text-underline-offset:3px}
++.mail{display:inline-block;margin-top:14px;font:500 1.05rem/1.2 var(--mono);padding:12px 16px;border-radius:14px;background:var(--surface);border:1px solid var(--line);text-decoration:none;color:var(--ink)!important;word-break:break-all}
++
++footer{border-top:1px solid var(--line);padding-block:28px 40px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;color:var(--muted);font-size:.9rem}
++footer a{color:var(--muted)}
++</style>
++</head>
++<body>
++<div class="wrap">
++<header>
++  <div class="bar">
++    <a class="brand" href="../../" aria-label="inflavor studio, home">inflavor studio</a>
++    <nav aria-label="Main">
++      <a href="../../#lava-player">Lava Player</a>
++      <a href="../../#contact">Contact</a>
++    </nav>
++  </div>
++</header>
++
++<main>
++<article>
++  <p class="label">Lava Player</p>
++  <h1>Privacy Policy</h1>
++  <p class="date">Effective September 30, 2026</p>
++
++  <p class="lead">
++    This policy explains what information the Lava Player app for Android (the “app”) handles
++    and why. The app is made by inflavor studio (“we”, “us”).
++  </p>
++
++  <h2>Your music stays on your device</h2>
++  <p>
++    Lava Player plays audio files that are already stored on your device. With your permission
++    it reads your audio library through Android’s media storage. Your music files, their tags,
++    covers and lyrics, your edits to them, playlists, favorites and all app settings are stored
++    only on your device. We never upload them and have no access to them.
++  </p>
++
++  <h2>Analytics</h2>
++  <p>
++    To understand how many people use the app and which features they use, Lava Player uses
++    <a href="https://firebase.google.com/docs/analytics">Google Analytics for Firebase</a>,
++    a service provided by Google. It collects the following automatically:
++  </p>
++  <ul>
++    <li>an app instance identifier and, if your device settings allow it, the Android advertising ID;</li>
++    <li>device information: device model, Android version, language, screen size;</li>
++    <li>app information: app version, when the app was first opened and updated;</li>
++    <li>usage: number and length of sessions, screens viewed and time spent in the app;</li>
++    <li>approximate location (country or region), derived from your IP address.</li>
++  </ul>
++  <p>
++    This data is not linked to your name, email or any account: the app has no accounts and
++    never asks for personal details. We use it only for analytics, to improve the app. The app
++    shows no ads, and we do not sell your data or use it for advertising.
++  </p>
++  <p>
++    Google processes this data on our behalf and receives it over an encrypted connection. We
++    keep analytics data for no longer than 14 months. How Google handles it is described in
++    <a href="https://policies.google.com/privacy">Google’s Privacy Policy</a> and in
++    <a href="https://policies.google.com/technologies/partner-sites">How Google uses information
++    from sites or apps that use its services</a>.
++  </p>
++
++  <h2>Your choices</h2>
++  <ul>
++    <li>You can reset or delete your advertising ID in Android settings
++      (Settings → Privacy → Ads, or Settings → Google → Ads, depending on your device).</li>
++    <li>Uninstalling the app stops all data collection and removes everything the app stored
++      on your device.</li>
++    <li>You can ask us to delete analytics data related to you by writing to the address below.</li>
++  </ul>
++
++  <h2>Permissions</h2>
++  <ul>
++    <li><b>Music and audio</b>: to find and play audio files on your device.</li>
++    <li><b>Notifications</b>: to show playback controls in the notification shade and on the lock screen.</li>
++    <li><b>Internet</b>: used only to send analytics data.</li>
++  </ul>
++
++  <h2>Backups</h2>
++  <p>
++    If Android backup is turned on, your device may back up the app’s settings to your Google
++    account. This backup is managed by Android and Google under your account’s settings; we have
++    no access to it.
++  </p>
++
++  <h2>Links to other websites</h2>
++  <p>
++    The app contains links to Google Play, Ko-fi and community pages (Reddit, Discord, Telegram,
++    Instagram). They open in your browser or in those apps, and those services have their own
++    privacy policies.
++  </p>
++
++  <h2>Children</h2>
++  <p>
++    The app is not directed at children under 13, and we do not knowingly collect information
++    from them.
++  </p>
++
++  <h2>Changes to this policy</h2>
++  <p>
++    If this policy changes, we will update this page and the effective date above.
++  </p>
++
++  <h2>Contact</h2>
++  <p>Questions or requests about your data:</p>
++  <a class="mail" href="mailto:support@inflavor.top">support@inflavor.top</a>
++</article>
++</main>
++
++<footer>
++  <span>© 2026 inflavor studio</span>
++  <a href="../../">inflavor.top</a>
++</footer>
++</div>
++</body>
++</html>
+-- 
+2.43.0
+
